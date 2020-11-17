@@ -1,0 +1,19 @@
+mixin loginForm()
+        div(class='loginAndForgot')
+                form.form(action="/login" method="POST" class="formLogin login")
+                        h2 Zaloguj
+                        div(class="formLoginElement")
+                                label(for="email" class="label-name")  Email   
+                                input(type="email" name="email" required)
+                        div(class="formLoginElement")
+                                label(for="password" class="label-name")  Hasło   
+                                input(type="password" name="password" required) 
+                        input.button(type="submit" value="Zaloguj ")
+                       
+                form.form(action="/account/forgot" method="POST" class="formLogin forgot")
+                        h2 Zapomniałeś hasła?
+                        div(class="formLoginElement")
+                                label(for="email" class="label-name")  Email   
+                                input(type="email" name="email" required)
+                        input.button(type="submit" value="Wyślij reset")
+                        != h.icon('cheeseburger')

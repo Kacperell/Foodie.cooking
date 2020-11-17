@@ -1,0 +1,142 @@
+/* tags */
+.tags {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    list-style: none;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* max-width: 70%; */
+}
+
+
+
+.tag {
+    display: block;
+    /* margin-right: 1rem; */
+    margin: 1.5px;
+    /* margin-left: 3px;
+    margin-right: 3px; */
+    /* justify-content: space-between;   ? */
+}
+
+.tag a {
+    transition: all 0.3s linear;
+    padding: 1rem 1rem;
+
+}
+
+
+.tag__choice {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.tag__choice input {
+    width: auto;
+    right: -1.5rem;
+    margin-right: -1rem;
+    position: relative;
+    z-index: 2;
+    font-family: 'Oswald', sans-serif;
+    background-color: #F75B0A;
+    background-color: #FFC40E;
+
+
+}
+
+.tag__choice input+label {
+    background: #e6e6e6;
+    padding: 1rem 1rem 1rem 4rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tag__choice input:checked+label {
+    background: rgb(221, 156, 122);
+    background-image: linear-gradient(to right, #FF8008 0%, #F75B0A 51%, rgb(255, 123, 0) 100%);
+    background: #FFC40E;
+
+}
+
+.tag__link {
+    /* background: #FFC40E; */
+    /* background: #FFC40E; */
+    /* background: #ff00ff; */
+    /* background-color: rgb(241, 228, 34); */
+    /* background-color: rgba(15, 15, 15, 0.013); */
+    /* background: url('/img/noise3.png');
+    background-position: center;
+    background-attachment: fixed; */
+    background: #fef234;
+    color: #303030;
+    color: #30362d;
+    display: -ms-flexbox;
+    display: flex;
+    /* padding-left: 1px; */
+    -webkit-clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
+    clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
+    -webkit-clip-path: polygon(89% 0, 100% 53%, 87% 100%, 0% 100%, 4% 51%, 0% 0%);
+    clip-path: polygon(89% 0, 100% 53%, 87% 100%, 0% 100%, 4% 51%, 0% 0%);
+    -webkit-clip-path: polygon(100% 0, 97% 50%, 100% 100%, 0% 100%, 4% 49%, 0% 0%);
+    clip-path: polygon(100% 0, 97% 50%, 100% 100%, 0% 100%, 4% 49%, 0% 0%);
+    -webkit-clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 48%, 2% 0);
+    clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 48%, 2% 0);
+
+    /* border-top: 1px solid #000000; */
+}
+
+/* piresyz tak bez border topa  wiekszy letter sapcing inna cziocnka  */
+
+
+
+.tag .tag__text {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.tag__count {
+    padding: 1rem 1rem;
+    background: #FFC40E;
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+
+    margin-right: -1px;
+    /* ugh */
+    /* background-clip: padding-box; */
+}
+
+/* .tag__link--active .tag__count {
+    background: #414040;
+    background: #292929;
+} */
+
+.tag__link--active {
+    background: #414040;
+    background: #292929;
+    background: url('/img/noise2.png');
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    transition: all 0.8s ease;
+}
+
+@media (max-width: 600px) {
+    .tag__link--active {
+        /* background: #414040; */
+        /* color: #292929; */
+        /* background: white; */
+        /* font-weight: bold; */
+    }
+
+    .tag a {
+        padding-left: 0.5rem;
+    }
+}

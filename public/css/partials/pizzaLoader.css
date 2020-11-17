@@ -1,0 +1,33 @@
+#pizza {
+    /* width: 200px;
+    height: auto;
+    margin: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: center; */
+    max-width: 35%;
+}
+
+
+.loader {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    margin-top: 20px;
+}
+
+.loader--Active {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0.8;
+}

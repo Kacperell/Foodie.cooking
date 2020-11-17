@@ -1,0 +1,26 @@
+
+extend layout
+
+block content
+    .inner
+    
+    form(action="/accountEdit" method="POST"  class="formLogin accountEdit")
+        h2 Edytuj swój profil
+        div(class="formLoginElement")
+                div(class="formLoginElement__alreadyExistsModal")
+                    span(class="marker  ") Ta nazwa jest już zajęta.
+                label(for="name" class="label-name")  Nazwa Użytkoniwka   
+                input(type="text" name="name" value=user.name required)
+
+        //- label(for="name") Name
+        //- input(type="text" name="name" value=user.name)
+        div(class="formLoginElement")
+                label(for="email" class="label-name")  Email   
+                input(type="email" name="email" value=user.email required)
+        div(class="formLoginElement")
+                label(for="about" class="label-name") O sobie
+                textarea(name="about" maxlength="500"   placeholder="Napisz coś o sobie! Podlinkuj inne social media by kucharze mogli sie z Tobą skontaktować.😄") #{user.about}
+                         
+        //- label(for="email") Email
+        //- input(type="email" name="email" value=user.email)
+        input.button(type="submit" value="Zapisz zmiany")

@@ -1,0 +1,48 @@
+mixin recipeCard(recipe={})
+    article.recipe
+        .recipe__author
+                span.chefAuthor
+                    a(href=`/chef/${recipe.author.slug}` class="title--author--link") #{recipe.author.name}
+                if user
+                    .recipe__action.recipe__action--heart
+                        form.heart(method="POST" action=`/api/przepisy/${recipe._id}/serce` class=('prevent') data-barba-prevent )
+                            - const heartStrings = user.hearts.map(obj => obj.toString())
+                            - const heartClass = heartStrings.includes(recipe._id.toString()) ? 'heart__button--hearted' : ''
+                            button(type="submit" name="heart" class='heart__button' class=heartClass class=('prevent') data-barba-prevent )
+                                !=h.icon('heart4')  
+                            //- object( type="image/svg+xml" data="./img/icons/heart4.svg")
+                                //- button(type="submit" name="heart" class='heart__button' class=heartClass )
+        
+        if user && recipe.author.equals(user._id)
+            .recipe__edit
+                    .recipe__action.recip__action--edit
+                        a(href=`/przepisy/${recipe._id}/edit`) Edytuj
+                            //- != h.icon('pencil')   
+                    .recipe__action.recip__action--delete
+                        a(href=`/usun/${recipe._id}` data-no-swup ) Usuń przepis 
+                            //- != h.icon('pencil')   
+        
+        a(href=`/recipe/${recipe._id}` class='')       
+            .recipe__img 
+                .recipe__actions
+                //- if user
+                    .recipe__action.recipe__action--heart
+                        form.heart(method="POST" action=`/api/przepisy/${recipe._id}/serce`)
+                            - const heartStrings = user.hearts.map(obj => obj.toString())
+                            - const heartClass = heartStrings.includes(recipe._id.toString()) ? 'heart__button--hearted' : ''
+                            button(type="submit" name="heart" class='heart__button' class=heartClass)
+                                !=h.icon('heart4')
+                //- if user && recipe.author.equals(user._id)
+                    .recipe__action.recip__action--edit
+                        a(href=`/przepisy/${recipe._id}/edit`)
+                            != h.icon('pencil')
+                img(src=`https://storage.googleapis.com/foodie-photos/${recipe.photo[0] || 'recipe.jpg'}`)
+                //- img(src=`https://storage.cloud.google.com/foodie-photos/${recipe.photo[0] || 'recipe.jpg'}`)
+           
+        .recipe__details
+            span.title
+                a(href=`/recipe/${recipe._id}`) #{recipe.name}
+                //- #{user.name}
+                
+                 
+            //- p=recipe.description.split(' ').slice(0,25).join(' ')

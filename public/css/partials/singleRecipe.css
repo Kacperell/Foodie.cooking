@@ -1,0 +1,332 @@
+.single {
+    text-align: center;
+}
+
+.single__details h1 {
+    display: flex;
+}
+
+li.product span {
+    padding: 1em;
+}
+
+.images {
+    max-width: 72%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.images--maingImg {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1px;
+}
+
+.images--thumbnails {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* overflow-y: hidden; */
+    /* justify-content: flex-start; */
+
+}
+
+.images--thumbnails--container {
+    display: flex;
+    /* justify-content: center; */
+    overflow-y: hidden;
+    /* justify-content: flex-start; */
+
+    scrollbar-width: thin;
+    scrollbar-color: #181817 #F5F5F5;
+
+}
+
+.images--thumbnails--container.withPhotos {
+    height: 8vh;
+}
+
+
+.images--thumbnails--container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.images--thumbnails--container::-webkit-scrollbar {
+    /* width: 4px; */
+    height: 10px;
+    background-color: #F5F5F5;
+}
+
+.images--thumbnails--container::-webkit-scrollbar-thumb {
+    /* border-radius: 5px; */
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+    background-color: #181817;
+
+}
+
+
+.single__image {
+    height: auto;
+    /* max-width: 73%; */
+    /* max-width: 25%; */
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.15);
+    /* max-height: 25vh; */
+    cursor: pointer;
+}
+
+.single__image.mainImg {
+    height: auto;
+    max-width: 100%;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.15);
+    max-height: 60vh;
+    cursor: pointer;
+}
+
+.single__image.thumbnail {
+    height: auto;
+    /* max-width: 73%; */
+    /* max-width: 15%; */
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.15);
+    max-height: 8vh;
+    cursor: pointer;
+}
+
+
+.single__details {
+    /* background: white; */
+    position: relative;
+    /* margin-top: -1rem; */
+    z-index: inherit;
+    /* box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15); */
+    /* border: 1px solid #292929; */
+    width: calc(60% - 10px);
+    overflow: hidden;
+    position: relative;
+}
+
+.descriptionDiv {
+    /* max-width: 80%; */
+    width: 100%;
+    /* padding: 1px; */
+    /* background: white; */
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.14);
+    border-top: 2px solid #292929;
+    border-bottom: 2px solid #292929;
+    /* border-top: 0.5px solid #D8D8D8; */
+    border-radius: 2px;
+    margin-bottom: 10px;
+    /* margin-top: 10px; */
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+}
+
+.descriptionDiv p {
+    /* padding: 3em; */
+    /* max-width: 75%; */
+
+}
+
+.descriptionDiv .descriptionDiv--recipe {
+    /* background: #eef3f781;
+    background: #b6e9b828;
+    border-radius: 100px;
+    padding: 10px; */
+}
+
+.descriptionDiv .ce-block {
+    align-items: center;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.descriptionDiv .ce-block h2 {
+    text-align: center;
+}
+
+.descriptionDiv .ce-block a {
+    text-decoration: underline wavy rgba(25, 87, 12, 0.753);
+}
+
+
+
+
+h3.title.title--author {
+    margin-top: 0;
+}
+
+h3.title.title--author .title--author--link {
+    color: rgb(255, 195, 14);
+}
+
+@media all and (max-width: 1100px) {
+    .descriptionDiv p {
+        max-width: 100%;
+    }
+
+    .single__details {
+        width: auto;
+        /* max-width: calc(100% - 10px); */
+    }
+
+    h1.title--single {
+        text-align: center;
+    }
+
+    .single__details {
+
+        box-shadow: none;
+        border: 0;
+
+    }
+
+    .descriptionDiv .ce-block {
+        max-width: 75%;
+    }
+
+}
+
+
+
+.ingredientsAndPhoto {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+    /* box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15); */
+    border-left: 2px solid #292929;
+    /* border-right: 1px solid #292929; */
+    -webkit-border-image:
+        -webkit-gradient(linear, 0 100%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 90%;
+    -webkit-border-image:
+        -webkit-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 90%;
+    -moz-border-image:
+        -moz-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 90%;
+    -o-border-image:
+        -o-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 90%;
+    border-image:
+        linear-gradient(to top, black, rgba(0, 0, 0, 0)) 1 90%;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    /* max-width: 95%; */
+    max-width: 95%;
+    /* align-items: flex-end;q */
+
+}
+
+.stripes {
+    width: 100%;
+}
+
+.stripes svg {
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+}
+
+.ingredientsDiv {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    /* padding-right: 10px; */
+    /* padding-left: 10px; */
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    max-width: 28%;
+}
+
+
+
+span.ingredientsDivTitle {
+    transform: rotate(-90deg);
+    transform-origin: bottom left;
+    position: absolute;
+    top: 55%;
+    left: -10px;
+    font-family: 'Francois One', sans-serif;
+    font-size: 120%;
+}
+
+
+.ingredientsDiv ul.ingredients {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+ul.ingredients li.product {
+    background: white;
+    list-style: none;
+    border-bottom: 1px solid #D8D8D8;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.14); */
+    margin: 0;
+    padding: 3px;
+    padding-left: 14px;
+    padding-right: 14px;
+    transition: background 0.2s;
+    display: flex;
+
+}
+
+ul.ingredients li.product:first-of-type {
+    border-top: 1px solid #D8D8D8;
+}
+
+.pswp__button.pswp__button--close {
+    margin-right: 35px;
+}
+
+
+@media all and (max-width: 900px) {
+    .ingredientsAndPhoto {
+        flex-direction: column;
+        flex-direction: column-reverse;
+
+    }
+
+    .ingredientsAndPhoto {
+        border: 0;
+        max-width: 100%;
+
+    }
+
+    .stripes {
+        display: none;
+    }
+
+    .images {
+        max-width: 100%;
+    }
+
+    .single__image {
+        max-width: 100%;
+
+    }
+
+    .single__image.thumbnail {
+        /* max-height: 15vh; */
+
+    }
+
+    .ingredientsDiv {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .descriptionDiv .ce-block {
+        /* max-width: 90%; */
+        max-width: 96%;
+    }
+
+}

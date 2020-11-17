@@ -1,0 +1,61 @@
+mixin recipeForm(recipe={})
+    form(action=`` id=`${recipe._id || ''}` method="POST" class="sendRecipeForm"  enctype="multipart/form-data" )
+        h2=title
+        div(class="recipAddElement recipAddElement--name")
+            //- label(for="name" class="label-name")  Nazwa przepisu:   
+            input(type="text" name="name" autocomplete="off" value=recipe.name required  maxlength="75" placeholder="Nazwa przepisu")        
+        div(class="recipAddElement formIngredients")   
+          span Składniki i proporcje:
+          - const ingredients=recipe.ingredients||[]
+            if recipe.ingredients
+                ul.formIngredients__ingredients
+                    each product in ingredients
+                        li.ingredient
+                            input(type="text" value=productname=`${product}` name="ingredients" )
+                            button(class="deleteingredient" type="button" return false )
+                                //- img(src=`/img/icons/delete.png` alt="" class="buttonImgDelete")
+                                != h.icon('delete') 
+                button(class="button addingredient" type="button" return false) Dodaj składnik
+                
+            else
+                ul.formIngredients__ingredients
+                    li.ingredient
+                        input(type="text" name="ingredients" ) 
+                        button(class="deleteingredient" type="button")    
+                            //- img(src="/img/icons/delete.png" alt="" class="buttonImgDelete")  
+                            != h.icon('delete')
+                    li.ingredient
+                        input(type="text" name="ingredients" ) 
+                        button(class="deleteingredient" type="button")    
+                            //- img(src="/img/icons/delete.png" alt="" class="buttonImgDelete")     
+                            != h.icon('delete')             
+                button(class="button addingredient" type="button"  return false) Kolejny składnik             
+
+        //- div(class="recipAddElement textArea")            
+            label(for="description" name="description" class="label-name") Jak przygotować te pyszności?  
+
+        div(id="editorjs" data=recipe.description class='recipAddElement')    
+
+        label(for="photo" class="custom-file-upload recipAddElement")   Wstaw zdjęcia 
+         input(type="file"  name="photo" id="photo" accept="image/gif, image/png, image/jpeg" class="upladPhoto" multiple="")
+        .previewNewImages 
+        if recipe.photo
+            p Aktualne zdjęcia. Strzałkami zmień kolejność wyświetlania zdjęć.
+        .previewImages 
+          if recipe.photo
+            each photo in recipe.photo
+                .previewImages__containerPhoto
+                    button(class="deletePhotoButton") Usuń 
+                    img(src=`https://storage.cloud.google.com/foodie-photos/${photo}`, alt=recipe.name width=200 id=photo class="previewImages--photoFromServer")
+                    button(class="previewImages__containerPhoto--left") <
+                    button(class="previewImages__containerPhoto--right") > 
+                    
+     
+        - const tags=recipe.tags||[]
+        ul.tags
+            each choice in h.tags
+                 .tag.tag__choice
+                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                    label(for=choice) #{choice}
+
+        input(type="submit" value="Dodaj przepis!" class="button")

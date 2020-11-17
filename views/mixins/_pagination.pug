@@ -1,0 +1,25 @@
+mixin pagination(page, pages,tag,search,chef)
+    if(pages>1)
+        .pagination
+            .pagination__prev
+            if page > 1
+                if tag
+                    a(href=`/recipes/${tag}/page/${page - 1}`) Poprzednia
+                else if search
+                    a(href=`/search/${page - 1}/searchvalue?search=${search}`) Poprzednia    
+                else if chef
+                    a(href=`/chef/${chef}/page/${page - 1}`) Poprzednia    
+                else 
+                    a(href=`/recipes/page/${page - 1}`) Poprzednia    
+            .pagination__text
+                p Strona #{page} z #{pages} 
+            .pagination__next
+            if page < pages
+                if tag
+                    a(href=`/recipes/${tag}/page/${parseFloat(page) + 1}`) Następna
+                else if search
+                    a(href=`/search/${parseFloat(page) + 1}/searchvalue?search=${search}`) Następna    
+                else if chef
+                    a(href=`/chef/${chef}/page/${parseFloat(page) + 1}`) Następna    
+                else
+                    a(href=`/recipes/page/${parseFloat(page) + 1}`) Następna    

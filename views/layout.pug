@@ -1,0 +1,133 @@
+doctype html
+html(lang="pl")
+  head
+  if title
+    title= `${title} | ${h.siteName}`
+  else
+     title= `${h.siteName}`
+
+  link(rel="stylesheet" href="/dist/style.css") 
+  //- link(rel="stylesheet" href="/css/style.css") 
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+  body()    
+    block header
+      header.top
+        nav.nav
+          .nav__section.nav__section--pages
+            a.logo.desktop(href="/")
+              span
+                  != h.icon('logo2')   
+            li.nav__item
+              a.nav__link(class=(currentPath.startsWith('/recipes') ? 'nav__link--active' : '') )     
+                span #{'Przepisy'}       
+                !=h.icon('przepisy')    
+            //- li.nav__item
+              a.nav__link(href='/top', class=(currentPath.startsWith('/top') ? 'nav__link--active' : ''))     
+                span #{'Top'}       
+                !=h.icon('top') 
+            li.nav__item
+              if(user)
+                a.nav__link(href=`/chef/${user.slug}`,
+                  class=(currentPath.startsWith('/accountEdit') ? 'nav__link--active' : '') 
+                  class=(currentPath.startsWith(`/chef/${user.slug}`) ? 'nav__link--active' : ''))
+                    span Profil
+                    != h.icon('chef') 
+              else
+                //- dodja dlatego ze jak register to tez sie powikszlalo
+                a.nav__link(href=`/dodaj`) 
+                  span Profil   
+                  != h.icon('chef')           
+            li.nav__item
+              a.nav__link(href='/dodaj', class=(currentPath.startsWith('/dodaj') ? 'nav__link--active' : '') )     
+                span #{'Dodaj'}       
+                !=h.icon('dodaj')            
+          .nav__section.nav__section--search
+            .search
+              a.logo.mobile(href="/")
+                span
+                    != h.icon('logo2')
+              form(class='form-search' method="GET" action=`/searchrecipes/1/searchvalue` data-swup-form)       
+                input.search__input(type="text" placeholder="Co byś przekąsił..?" name="search")
+              .search__results
+          .nav__section.nav__section--user
+            if user
+              li.nav__item: a.nav__link(href="/hearts", class="save" class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))             
+                //- span.heart-count #{user.hearts && user.hearts.length}
+                span Zapisane
+                != h.icon('heart3')
+              li.nav__item: a.nav__link(href="/logout",  data-no-swup class=(currentPath.startsWith('/logout') ? 'nav__link--active' : '') data-router-disabled)               
+                span Wyloguj
+                != h.icon('exit2')            
+              //- li.nav__item: a.nav__link(href=`/chef/${user.slug}`,
+               class=(currentPath.startsWith('/accountEdit') ? 'nav__link--active' : '') 
+               class=(currentPath.startsWith(`/chef/${user.slug}`) ? 'nav__link--active' : ''))
+                span Profil
+                != h.icon('chef') 
+            else
+              //- li.nav__item: a.nav__link.nav__link--register(href="/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : ''))
+              - const registerClass = currentPath.startsWith('/register') ? 'nav__link--active' : ''
+              li.nav__item: a.nav__link.nav__link--register(href="/register", class=registerClass)
+                span Zostań kucharzem! 
+                != h.icon('cooker')
+              //- li.nav__item: a.nav__link(href="/login", class=(currentPath.startsWith('/login') ? 'nav__link--active' : '')) Zaloguj się 
+                != h.icon('cooker')  
+   
+    -let tags=[];
+    if(tag)
+      -tags=tag.split(',')
+    .mainTagsDiv       
+      .checkBoxMultitags
+          label(for='multitags') Zaznacz wiele
+          input(type="checkbox" id='multitags') 
+        
+      button.button.searchMultiTagsButton.off
+          span Szukaj  
+
+      ul.mainTagsUl
+        //- .checkBoxMultitags
+        //-   label(for='multitags') Zaznacz wiele
+        //-   input(type="checkbox" id='multitags') 
+        
+        //- button.button.searchMultiTagsButton.off
+        //-   span Szukaj  
+          
+        each t in h.tags
+          li.tag
+            -var flag=1;
+            if(tags.length!=0)     
+              each tag in tags
+                if(t==tag) 
+                  span.tag__text 
+                    a.tag__link.tag__link--sideBar(href=`/recipes/${t}` class='tag__link--active' ) ##{t}  
+                  -flag=0
+            if(flag)
+              span.tag__text   
+                a.tag__link.tag__link--sideBar(href=`/recipes/${t}`  ) ##{t}
+                //- a(class="tag__link tag__link--sideBar" href=`/recipes/${t}`  ) ##{t}
+                  
+              //- a.tag__link(href=`/recipes/${t}` ) 
+              //-   span.tag__text ##{t}    
+
+
+    
+    block messages
+      if locals.flashes
+        .inner
+          .flash-messages
+            - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
+
+    main( id="swup" class="transition-fade")  
+      .content
+        block content
+    .loader 
+      <canvas id="pizza"></canvas>
+
+    block scripts
+    script(src="/dist/App.bundle.js")      
+
+    

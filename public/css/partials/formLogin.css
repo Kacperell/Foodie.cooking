@@ -1,0 +1,258 @@
+.inner.formsTologin {
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-start; */
+
+}
+
+.formLogin.register {
+    margin-left: 6px;
+}
+
+
+
+
+.formLogin {
+    background: white;
+    background: #fff;
+    /* padding: 3em; */
+    padding: 30px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 1px 10px #292929; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 6px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid #292929;
+    width: 205px;
+}
+
+.formLogin.accountEdit {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.loginAndForgot {
+    z-index: 2;
+}
+
+.formLogin.register {
+    margin-left: -14px;
+    z-index: 1;
+    border-left: 0;
+    box-shadow: none;
+
+}
+
+
+
+
+.formLogin.forgot {
+    box-shadow: none;
+    border-left: 0;
+    border-bottom: 0;
+    position: relative;
+    z-index: 102;
+}
+
+.formLogin.forgot svg {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    left: -42px;
+}
+
+.formLogin.forgot::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    top: 0;
+    width: 1px;
+    border-left: 2px solid #292929;
+    height: 95%;
+    height: 110%;
+    /* -webkit-border-image:
+        -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image:
+        -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image:
+        -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image:
+        -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image:
+        linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%; */
+}
+
+.formLogin.forgot::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    width: 96%;
+    width: 116%;
+    border-left: 1px solid #292929;
+    height: 2px;
+    background: #292929;
+}
+
+
+
+@media all and (max-width: 760px) {
+    .inner.formsTologin {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formLogin {
+        box-shadow: inset 0 0 2px #292929;
+    }
+
+    .formLogin.register {
+        margin-left: 0;
+        border: 2px solid #292929;
+        box-shadow: inset 0 0 2px #292929;
+    }
+
+    .formLogin.forgot {
+        border: 2px solid #292929;
+        box-shadow: inset 0 0 2px #292929;
+        ;
+    }
+
+    .formLogin.forgot svg {
+        display: none;
+    }
+
+    .formLogin.forgot::before {
+        display: none;
+    }
+
+    .formLogin.forgot::after {
+        display: none;
+    }
+
+}
+
+
+
+
+.formLoginElement {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.formLoginElement input,
+.formLoginElement textarea {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: rgb(46, 42, 11);
+    font-family: 'Crete Round', serif;
+    font-size: 16px;
+    padding: 0;
+    /* padding-top: 10px; */
+    border: none;
+    border-bottom: 1.5px solid rgb(189, 189, 189);
+    border-top: 1px solid rgb(189, 189, 189);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+    background: white;
+    padding: 7px;
+}
+
+.formLoginElement.password {
+    margin-bottom: 0;
+}
+
+.formLoginElement .formLoginElement__alreadyExistsModal,
+.formLoginElement .formLoginElement__PasswordModal {
+    height: 15px;
+    margin-top: 3px;
+}
+
+.formLoginElement .formLoginElement__alreadyExistsModal span,
+.formLoginElement .formLoginElement__PasswordModal span {
+    color: red;
+    opacity: 0;
+    -webkit-transform: opacity 1s;
+    transition: opacity 1s;
+}
+
+.active {
+    opacity: 1 !important;
+}
+
+.marker {
+    display: inline-block;
+    position: relative;
+    background: yellow;
+}
+
+.marker.under:before,
+.marker.under:after {
+    z-index: -10;
+}
+
+.marker:before,
+.marker:after {
+    display: inline-block;
+    position: absolute;
+    background: yellow;
+    content: "";
+    opacity: .5;
+    height: 30%;
+    width: 60%;
+}
+
+.marker:before {
+    left: 2%;
+    transform: rotate(5deg) translatey(-.2em);
+}
+
+.marker:after {
+    left: 15%;
+    transform: rotate(3deg) translatey(1em);
+}
+
+
+
+.formLoginElement textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.formLoginElement textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.formLoginElement textarea::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+.formLoginElement textarea::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #303030d7;
+}
+
+.formLoginElement input:focus,
+.formLoginElement input:valid {
+    transition: border 0.2s ease;
+    border-bottom: 1.5px solid #292929;
+
+}
+
+.formLoginElement label {
+    font-size: 11px;
+}

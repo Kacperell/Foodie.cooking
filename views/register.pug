@@ -1,0 +1,23 @@
+extends layout
+include mixins/_loginForm.pug
+
+block content
+    .inner
+        //- +loginForm()
+        form.form(action="/register" method="POST" class="formLogin")
+            h2 Załóż konto
+            div(class="formLoginElement")
+                label(for="name" class="label-name")  Nazwa Użytkoniwka   X
+                input(type="text" name="name" required)
+            div(class="formLoginElement")
+                label(for="email" class="label-name")  Email   
+                input(type="email" name="email" required)
+            div(class="formLoginElement")
+                label(for="password" class="label-name")  Hasło   
+                input(type="password" name="password" required)
+            div(class="formLoginElement")
+                label(for="password-confirm" class="label-name")  Potwierdz hasło    
+                input(type="password" name="password-confirm" required)
+
+            input.button(type="submit" value="Zarejestruj") 
+

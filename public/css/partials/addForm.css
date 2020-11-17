@@ -1,0 +1,277 @@
+.previewImages {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.sendRecipeForm {
+    max-width: 99%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+.recipAddElement {
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.recipAddElement input {
+    /* border-radius: 3px; */
+    border: 0.5px solid black;
+    border: 0.5px solid #707684;
+    padding: 5px;
+    background: rgba(243, 242, 247, 0.11);
+    background: rgba(251, 251, 252, 0.877);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 23px;
+}
+
+.recipAddElement input.upladPhoto {
+    border-radius: 3px;
+}
+
+.recipAddElement input:focus {
+    background: rgb(239, 237, 243);
+}
+
+.recipAddElement.formIngredients .ingredient button {
+    height: 34px;
+    width: 35px;
+    border: 0.5px solid #707684;
+    border-left: 0;
+    padding: 7px;
+    background: #F3F2F7;
+    background: rgba(243, 242, 247, 0.11);
+    transition: all 0.1s;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.recipAddElement.formIngredients .ingredient button:hover {
+    background: rgb(239, 237, 243);
+}
+
+.recipAddElement.formIngredients .ingredient button svg {
+    fill: #707684;
+}
+
+.recipAddElement.formIngredients .ingredient button img {
+    fill: #707684;
+}
+
+.recipAddElement.formIngredients li.ingredient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.recipAddElement.formIngredients .ingredient input {
+    height: 23px;
+}
+
+
+.recipAddElement.recipAddElement--name {
+    display: flex;
+    align-items: center;
+}
+
+.recipAddElement input[name="name"] {
+    width: 500px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+}
+
+.recipAddElement.formIngredients {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.recipAddElement.formIngredients ul.formIngredients__ingredients {
+    list-style: none;
+    padding: 0;
+}
+
+
+.recipAddElement.formIngredients input {
+    width: 330px;
+    max-width: 60%;
+}
+
+.recipAddElement.formIngredients button.addingredient {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+.recipAddElement.custom-file-upload {
+    margin-bottom: 5px;
+}
+
+
+.previewNewImages {
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
+
+
+
+.previewImages {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.previewImages__containerPhoto {
+    position: relative;
+    width: 200px;
+    max-width: 50%;
+}
+
+/* Make the image responsive */
+.previewImages__containerPhoto img {
+    /* width: 100%; */
+    height: auto;
+    border-radius: 2px;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.previewImages__containerPhoto .deletePhotoButton {
+    position: absolute;
+    top: 15%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    background-color: #707684;
+    color: white;
+    font-size: 13px;
+    padding: 7px 11px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.previewImages__containerPhoto .previewImages__containerPhoto--left {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #707684;
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.previewImages__containerPhoto .previewImages__containerPhoto--right {
+    position: absolute;
+    bottom: 5%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #707684;
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+.off {
+    display: none;
+}
+
+
+#editorjs {
+    width: 600px;
+    max-width: 95%;
+    border: 5px solid #bbb1b19d;
+    border: 5px solid #F3F2F7;
+    border-radius: 5px;
+    box-shadow: 0 0 0.5em rgb(185, 185, 187);
+}
+
+.codex-editor {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 200px !important;
+}
+
+
+.sendRecipeForm ul.tags {
+    width: 600px;
+    max-width: 99%;
+}
+
+@media all and (max-width:700px) {
+    .previewImages__containerPhoto .deletePhotoButton {
+        font-size: 12px;
+        padding: 6px 10px;
+        left: 55%;
+    }
+
+    .recipAddElement {
+        width: 100%;
+    }
+
+    .recipAddElement.recipAddElement--name {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .recipAddElement input[name="name"] {
+        width: 80%;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .recipAddElement.formIngredients input {
+        width: 75%;
+        max-width: 75%;
+    }
+
+
+    .previewImages__containerPhoto {
+        max-width: 33%;
+        width: 200px;
+    }
+
+    .previewImages__containerPhoto img {
+        max-width: 100%;
+
+    }
+
+    .sendRecipeForm ul.tags .tag__choice input+label {
+        padding: 0.7rem 0.7rem 0.7rem 3rem;
+    }
+
+}

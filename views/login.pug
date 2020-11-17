@@ -1,0 +1,27 @@
+extends layout
+include mixins/_loginForm.pug
+//- include mixins/_forgot.pug
+block content
+    .inner.formsTologin
+        +loginForm()      
+        form.form(action="/register" method="POST" class="formLogin register")
+            h2 Załóż konto
+            div(class="formLoginElement")
+                div(class="formLoginElement__alreadyExistsModal")
+                    span(class="marker  ") Ta nazwa jest już zajęta.
+                label(for="name" class="label-name")  Nazwa Użytkoniwka                
+                input(type="text" name="name" required)
+            div(class="formLoginElement")
+                label(for="email" class="label-name")  Email   
+                input(type="email" name="email" required)
+            div(class="formLoginElement password")           
+                label(for="password" class="label-name")  Hasło   
+                input(type="password" name="password" required minlength="8")
+            div(class="formLoginElement ")
+                div(class="formLoginElement__PasswordModal")
+                    span(class="marker  ") Hasła sie różnią.
+                label(for="password-confirm" class="label-name")  Potwierdz hasło    
+                input(type="password" name="password-confirm" required)
+
+            input.button(type="submit" value="Zarejestruj") 
+        //- +forgotForm()

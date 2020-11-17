@@ -1,0 +1,13 @@
+mixin review(review)
+    .review__header
+        .review__author
+            a(href=`/chef/${recipe.author.slug}` class="title--author--link") #{review.author.name}
+            //- p=review.author.name
+            time.review__time(datetime=review.created)=h.moment(review.created,'pl').fromNow()
+        if user && review.author._id.equals(user._id)
+            a(href=`/deleteReview/${review._id}` class='review__authorA' data-no-swup) Usuń 
+
+       
+
+    .review__body 
+        p=review.text

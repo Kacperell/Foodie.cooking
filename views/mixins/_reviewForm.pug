@@ -1,0 +1,30 @@
+mixin reviewForm(recipe)
+  .RecipeLikeAndSave
+
+  
+    -const buttoLikeInRecipeClass=recipe.likes.toString().includes(user._id.toString())?'button-inRecipeReview--active' : ''
+    if(recipe.likes.length!=0)
+      form.like(action=`/api/like/${recipe._id}/${recipe.likes}` method="POST" )
+        input.button.button-inRecipeReview(type="submit" value="Zostaw polubienie 🍪" class=buttoLikeInRecipeClass)
+    else
+      form.like(action=`/api/like/${recipe._id}/0` method="POST" )
+        input.button.button-inRecipeReview(type="submit" value="Zostaw polubienie 🍪")
+
+    form.heart.heart--inRecipe(method="POST" action=`/api/przepisy/${recipe._id}/serce`)
+      //- - const heartStrings = user.hearts.map(obj => obj.toString())
+      - const heartStrings = user.hearts
+      - const heartClass = heartStrings.includes(recipe._id.toString()) ? 'heart__button--hearted' : ''
+      - const buttonClass = heartStrings.includes(recipe._id.toString()) ? 'button-inRecipeReview--active' : ''
+      button.button.button-inRecipeReview(type="submit" name="heart" class='heart__button heart__button--inRecipe ' class=heartClass class=buttonClass) Zapisz przepis
+        !=h.icon('heart4')
+
+
+
+  form.reviewer( action=`/reviews/${recipe._id}` method="POST" )
+    textarea(name="text" placeholder="Spróbowałeś przyrządzić? Smakowało?" maxlength="2500")
+    //- .reviewer__meta
+    //-   .reviewer__stars
+    //-     each num in [5,4,3,2,1]
+    //-       input(type="radio" required id=`star${num}` name="rating" value=num)
+    //-       label(for=`star${num}`) #{num} Stars
+    input.button(type="submit" value="Dodaj komenatrz")

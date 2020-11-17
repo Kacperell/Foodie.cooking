@@ -1,0 +1,123 @@
+extends layout
+
+include mixins/_reviewForm
+include mixins/_review
+block content
+    //- pre=h.dump(recipe.reviews) 
+    //- pre=h.dump(recipe) 
+    //- .single
+    //-     .single__hero  
+    //-         img.single__image(src=`/uploads/${recipe.photo || 'recipe.png'}`, alt="recipePhoto")
+
+    .single__details.inner
+        //.stripes
+            !=h.icon('stripes')
+        h1.title.title--single
+            a(href=`/recipe/${recipe._id}`) #{recipe.name}
+            if user
+                    //- .recipe__action.recipe__action--heart
+                    //-     form.heart(method="POST" action=`/api/przepisy/${recipe._id}/serce`)
+                    //-         - const heartStrings = user.hearts.map(obj => obj.toString())
+                    //-         - const heartClass = heartStrings.includes(recipe._id.toString()) ? 'heart__button--hearted' : ''
+                    //-         button(type="submit" name="heart" class='heart__button heart__button--inRecipe ' class=heartClass) 
+                    //-             !=h.icon('heart4')
+        //- jesli ktos usunie konoto to trzba ifa
+        h3.title.title--author
+            span Ugotował: 
+                //- a(href=`/chef/${recipe.author._id}` class="title--author--link") #{recipe.author.name}   
+                a(href=`/chef/${recipe.author.slug}` class="title--author--link") #{recipe.author.name}   
+                //- a.title.title--author--link #{recipe.author.name}      
+        
+        .ingredientsAndPhoto
+           
+            if recipe.ingredients
+                .ingredientsDiv
+                        
+                    ul.ingredients         
+                        each prodcut in recipe.ingredients
+                            li.product                  
+                                span.tag__text #{prodcut}
+                        //- span.ingredientsDivTitle Składniki        
+             
+            //- img.single__image(src=`/uploads/${recipe.photo || 'recipe.png'}`, alt="recipePhoto")
+            .images 
+                .images--maingImg
+                    //- img.single__image.mainImg(src=`/uploads/${recipe.photo[0] || 'recipe.jpg'}`, alt="recipePhoto")
+                    //- img.single__image.mainImg(src=`${recipe.photo[0] || 'recipe.jpg'}`, alt="recipePhoto")
+                    //- img.single__image.mainImg(src=`https://storage.cloud.google.com/foodie-photos/${recipe.photo[0] || 'recipe.jpg'}`, alt="recipePhoto")
+                    img.single__image.mainImg(src=`https://storage.googleapis.com/foodie-photos/${recipe.photo[0] || 'recipe.jpg'}`, alt="recipePhoto")
+                .images--thumbnails
+                   .images--thumbnails--container(class=recipe.photo.length>1?'withPhotos':'')
+                        each photo,index in recipe.photo
+                            if(index==0)
+                            else
+                                img.single__image.thumbnail(src=`https://storage.googleapis.com/foodie-photos/${photo || 'recipe.jpg'}`, alt="recipePhoto")
+                                //- img.single__image.thumbnail(src=`https://storage.cloud.google.com/foodie-photos/${photo || 'recipe.jpg'}`, alt="recipePhoto")
+            //- .images #{recipe.photo[0]}
+            //-     each photo,index in recipe.photo
+            //-         if(index==0)
+            //-             .images--maingImg
+            //-                 img.single__image.mainImg(src=`/uploads/${photo || 'recipe.png'}`, alt="recipePhoto")
+            //-         else
+
+            //-             img.single__image(src=`/uploads/${photo || 'recipe.png'}`, alt="recipePhoto")
+
+
+
+            
+        .descriptionDiv
+            .descriptionDiv--recipe #{recipe.description}
+
+                // Root element of PhotoSwipe. Must have class pswp
+        .pswp(tabindex='-1' role='dialog' aria-hidden='true')
+            .pswp__bg
+            .pswp__scroll-wrap
+                .pswp__container
+                    .pswp__item
+                    .pswp__item
+                    .pswp__item
+                .pswp__ui.pswp__ui--hidden
+                    .pswp__top-bar
+                        .pswp__counter
+                        button.pswp__button.pswp__button--close(title='Close (Esc)')
+                        button.pswp__button.pswp__button--share(title='Share')
+                        button.pswp__button.pswp__button--fs(title='Toggle fullscreen')
+                        button.pswp__button.pswp__button--zoom(title='Zoom in/out')
+                    .pswp__preloader
+                        .pswp__preloader__icn
+                            .pswp__preloader__cut
+                                .pswp__preloader__donut
+                    .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+                        .pswp__share-tooltip
+                    button.pswp__button.pswp__button--arrow--left(title='Previous (arrow left)')
+                    button.pswp__button.pswp__button--arrow--right(title='Next (arrow right)')
+                    .pswp__caption
+                        .pswp__caption__center
+    
+            
+        //- .descriptionDiv
+        //-     p=recipe.description
+            
+        if recipe.tags
+            ul.tags
+                each tag in recipe.tags
+                    li.tag
+                        span.tag__text 
+                            a.tag__link.tag__link--inRecipe(href=`/recipes/${tag}`) ##{tag}
+                        //- a.tag__link.tag__link--inRecipe(href=`/recipes/${tag}`)
+                        //-     span.tag__text ##{tag}
+
+    .numberOfLikes
+        p Liczba polubień🍪: 
+            span #{recipe.likes.length}
+    .reviewsAndForm  
+        if user
+                +reviewForm(recipe)
+        else 
+            span Zaloguj się żeby skomentować, polubić lub zapisać przepis na później.        
+        if recipe.reviews
+                .reviews
+                    each review in recipe.reviews
+                        .review
+                            //- p=review.text
+                            +review(review)

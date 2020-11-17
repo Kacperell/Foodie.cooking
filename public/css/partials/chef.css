@@ -1,0 +1,73 @@
+.chefInfo {
+    background: white;
+    /* background: rgba(255, 255, 255, 0.514); */
+    /* FAJNY GDY ZMIENIMY TLO W PREFERENJACH! tutaj zrobic i przy nazwach przepsow */
+
+    padding: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    /* margin-top: 6px; */
+    /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15); */
+    display: flex;
+    border-bottom: 2px solid #292929;
+
+
+
+}
+
+.chefinfo__imgAndEdit {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+img.chefAvatar {
+    width: 100%;
+    /* max-width: 40%; */
+    /* height: 200px; */
+    object-fit: scale-down;
+    /* border-radius: 100px; */
+    /* border: 3px solid; */
+    /* border-image: linear-gradient(45deg, rgb(153, 153, 153), #FFC40E) 1; */
+}
+
+.chefinfo__info {
+    padding-left: 15px;
+    width: calc(70% - 10px);
+}
+
+.button.editProfilBtn {
+    max-width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+@media all and (max-width: 680px) {
+    .chefInfo {
+        padding: 1em;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chefinfo__imgAndEdit {
+        width: 35%;
+        font-size: 10px;
+    }
+
+    .chefinfo__info {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .chefinfo__info--chefName {
+        text-align: center;
+    }
+
+}

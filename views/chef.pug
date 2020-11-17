@@ -1,0 +1,25 @@
+extends layout
+include mixins/_recipeCard
+include mixins/_pagination
+
+block content
+    //- pre=h.dump(chef) 
+    .inner.mainInnerRecipes 
+        .chefInfo
+            .chefinfo__imgAndEdit
+                img.chefAvatar(src="/uploads/chef.png", alt="recipePhoto")
+                if user && chef._id.equals(user._id)
+                    a(href=`/accountEdit` class="button editProfilBtn") Edytuj swój profil
+            .chefinfo__info     
+                h2.chefinfo__info--chefName #{chef.name}
+                span.countRecipes Przepisów: #{recipes.length}
+                if chef.about
+                p #{chef.about}
+                //- p osoba, która przyrządza zgodnie z zasadami sztuki kulinarnej potrawy w zakładach gastronomicznych, najczęściej według zamówienia przyjętego .gastronomicznych, najczęściej według zamówienia przyjętego .
+
+
+        .recipes.ChefRecipes  
+            each recipe in recipes
+                +recipeCard(recipe)
+        +pagination(page,pages,tag,search,chef.slug)         
+        //- script(src='/js/tags.js')         

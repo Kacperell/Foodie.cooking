@@ -1,0 +1,28 @@
+extends layout
+include mixins/_recipeCard
+include mixins/_pagination
+
+block content
+    .inner.mainInnerRecipes 
+        //- .mainTagsDiv
+                ul.mainTagsUl
+                    each t in tags
+                        li.tag
+                            a.tag__link(href=`/przepisy/${t._id}` class=(t._id===tag?'tag__link--active':''))  
+                                span.tag__text ##{t._id}
+        if title
+            h2=title                 
+        //- if tag
+        //-     h1=tag
+        .recipes         
+            each recipe in recipes  
+                +recipeCard(recipe)         
+            if(recipes.length==0)          
+                div(id="noRecipes")
+                    span Nie znaleziono przepisów.
+                //- jakies foto bodymovin smuteq
+
+        +pagination(page,pages,tag,search)        
+
+        
+        //- script(src="/js/tags.js")         
